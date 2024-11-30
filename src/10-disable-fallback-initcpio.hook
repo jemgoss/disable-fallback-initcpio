@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = linux
+
+[Action]
+Description = Disabling linux mkinitcpio 'fallback' preset...
+When = PostTransaction
+Exec = /usr/bin/sed -i "s/^PRESETS=('default' 'fallback')$/#&\nPRESETS=('default')/" /usr/share/mkinitcpio/hook.preset
